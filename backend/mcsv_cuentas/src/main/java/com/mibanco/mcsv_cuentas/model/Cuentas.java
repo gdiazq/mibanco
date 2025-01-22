@@ -28,14 +28,14 @@ public class Cuentas {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long cuentaId;
+    private Long cuenta_id;
 
     @Column(name = "numero_cuenta", nullable = false, unique = true, length = 20)
-    private String numeroCuenta;
+    private String numero_cuenta;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "tipo_cuenta", nullable = false)
-    private TipoCuenta tipoCuenta;
+    private TipoCuenta tipo_cuenta;
 
         public enum TipoCuenta {
             AHORRO, CORRIENTE, PLAZOFIJO
@@ -46,7 +46,7 @@ public class Cuentas {
 
     @CreationTimestamp
     @Column(name = "fecha_apertura", nullable = false, updatable = false)
-    private LocalDateTime fechaApertura;
+    private LocalDateTime fecha_apertura;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "estado", nullable = false)
