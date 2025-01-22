@@ -62,9 +62,9 @@ public class Clientes {
     @Builder.Default
     private Estado estado = Estado.ACTIVO;
 
-    public enum Estado {
-        ACTIVO, INACTIVO
-    }
+        public enum Estado {
+            ACTIVO, INACTIVO
+        }
 
 
 
