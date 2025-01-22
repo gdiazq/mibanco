@@ -27,7 +27,7 @@ public class Clientes {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long clienteId;
+    private Long cliente_id;
 
     @Column(name = "nombre", nullable = false)
     private String nombre;
@@ -38,8 +38,8 @@ public class Clientes {
     @Column(name = "rut", nullable = false, unique = true)
     private String rut;
 
-    @Column(name = "fechaNacimiento", nullable = false)
-    private String fechaNacimiento;
+    @Column(name = "fecha_nacimiento", nullable = false)
+    private String fecha_nacimiento;
 
     @Column(name = "edad", nullable = false)
     private int edad;
@@ -53,9 +53,9 @@ public class Clientes {
     @Column(name = "correo", nullable = false, unique = true)
     private String correo;
 
-    @Column(name = "fechaRegistro", nullable = false, updatable = false)
+    @Column(name = "fecha_registro", nullable = false, updatable = false)
     @CreationTimestamp
-    private LocalDateTime fechaRegistro;
+    private LocalDateTime fecha_registro;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "estado", nullable = false)
@@ -65,12 +65,5 @@ public class Clientes {
         public enum Estado {
             ACTIVO, INACTIVO
         }
-
-
-
-
-
-
-
 
 }
