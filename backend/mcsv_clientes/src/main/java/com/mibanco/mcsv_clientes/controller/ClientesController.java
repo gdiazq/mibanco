@@ -1,10 +1,13 @@
 package com.mibanco.mcsv_clientes.controller;
 
+import java.util.List;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.mibanco.mcsv_clientes.dto.ClientesDto;
 import com.mibanco.mcsv_clientes.model.Clientes;
 import com.mibanco.mcsv_clientes.service.ClientesService;
 
@@ -21,5 +24,10 @@ public class ClientesController {
     public ResponseEntity<Iterable<Clientes>> findAll() {
         return ResponseEntity.ok(clientesService.findAll());
     }
+
+    @GetMapping("/all-with-cuentas")
+    public ResponseEntity<List<ClientesDto>> findAllClientesWithCuentas() {
+        return ResponseEntity.ok(clientesService.findAllClientesWithCuentas());
+    }    
 
 }
