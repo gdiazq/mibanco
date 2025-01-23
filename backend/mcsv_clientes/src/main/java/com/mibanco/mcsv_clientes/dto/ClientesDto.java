@@ -1,6 +1,7 @@
 package com.mibanco.mcsv_clientes.dto;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import lombok.Data;
 
@@ -11,7 +12,7 @@ public class ClientesDto {
     private String nombre;
     private String apellido;
     private String rut;
-    private CuentasDto cuentas;
+    private List<CuentasDto> cuentas;
     private String fecha_nacimiento;
     private int edad;
     private String direccion;

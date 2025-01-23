@@ -9,6 +9,7 @@ import lombok.Data;
 public class CuentasDto {
 
     private Long cuenta_id;
+    private String rut;
     private String numero_cuenta;
     private TipoCuenta tipo_cuenta;
 

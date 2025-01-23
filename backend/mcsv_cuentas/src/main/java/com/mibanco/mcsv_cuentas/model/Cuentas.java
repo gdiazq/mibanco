@@ -30,6 +30,9 @@ public class Cuentas {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long cuenta_id;
 
+    @Column(name = "rut", nullable = false)
+    private String rut;
+
     @Column(name = "numero_cuenta", nullable = false, unique = true, length = 20)
     private String numero_cuenta;
 
