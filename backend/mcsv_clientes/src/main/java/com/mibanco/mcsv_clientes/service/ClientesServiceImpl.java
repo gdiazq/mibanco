@@ -56,7 +56,6 @@ public class ClientesServiceImpl implements ClientesService {
                     clientesDto.setCuentas(cuentasDto);
                     return clientesDto;
         }).collect(Collectors.toList());    
-            
     }
 
 }
