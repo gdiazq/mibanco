@@ -15,6 +15,6 @@ public interface CuentasServiceClient {
     List<CuentasDto> findAllClientesWithCuentas();
 
     @GetMapping("/cuentas/{rut}")
-    CuentasDto getCuentasByRut(@PathVariable String rut);
+    List <CuentasDto> getCuentasByRut(@PathVariable String rut);
 
 }

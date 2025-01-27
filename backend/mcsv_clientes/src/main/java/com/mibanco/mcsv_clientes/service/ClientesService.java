@@ -11,4 +11,6 @@ public interface ClientesService {
 
     List<ClientesDto> findAllClientesWithCuentas();
 
+    List<ClientesDto> findAllClientesWithCuentasByRut(String rut);
+
 }

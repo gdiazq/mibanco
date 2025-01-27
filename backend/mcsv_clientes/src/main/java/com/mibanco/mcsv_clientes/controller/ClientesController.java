@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -29,6 +30,11 @@ public class ClientesController {
     @GetMapping("cuenta/all-with-cuentas")
     public ResponseEntity<List<ClientesDto>> findAllClientesWithCuentas() {
         return ResponseEntity.ok(clientesService.findAllClientesWithCuentas());
+    }
+
+    @GetMapping("cuenta/{rut}")
+    public ResponseEntity<List<ClientesDto>> findAllClientesWithCuentasByRut(@PathVariable String rut) {
+        return ResponseEntity.ok(clientesService.findAllClientesWithCuentasByRut(rut));
     }
 
     

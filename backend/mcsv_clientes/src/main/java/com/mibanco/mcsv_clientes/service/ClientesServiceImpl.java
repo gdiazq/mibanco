@@ -58,4 +58,35 @@ public class ClientesServiceImpl implements ClientesService {
         }).collect(Collectors.toList());      
     }
 
+    @Override
+    @Transactional(readOnly = true)
+    public List<ClientesDto> findAllClientesWithCuentasByRut(String rut) {
+        List<Clientes> clientes = clientesRepository.findAll();
+        List<CuentasDto> cuentas = cuentasServiceClient.getCuentasByRut(rut);
+
+        return clientes.stream()
+                .filter(cliente -> cliente.getRut().equals(rut))
+                .map(cliente -> {
+                    ClientesDto clientesDto = new ClientesDto();
+                    clientesDto.setCliente_id(cliente.getCliente_id());
+                    clientesDto.setNombre(cliente.getNombre());
+                    clientesDto.setApellido(cliente.getApellido());
+                    clientesDto.setRut(cliente.getRut());
+                    clientesDto.setFecha_nacimiento(cliente.getFecha_nacimiento());
+                    clientesDto.setEdad(cliente.getEdad());
+                    clientesDto.setDireccion(cliente.getDireccion());
+                    clientesDto.setTelefono(cliente.getTelefono());
+                    clientesDto.setCorreo(cliente.getCorreo());
+                    clientesDto.setFecha_registro(cliente.getFecha_registro());
+                    clientesDto.setEstado(ClientesDto.Estado.valueOf(cliente.getEstado().name()));
+
+                    List<CuentasDto> cuentasDto = cuentas.stream()
+                            .filter(cuenta -> cuenta.getRut().equals(cliente.getRut()))
+                            .collect(Collectors.toList());
+                    
+                    clientesDto.setCuentas(cuentasDto);
+                    return clientesDto;
+                }).collect(Collectors.toList());
+    } 
+
 }
