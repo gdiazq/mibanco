@@ -27,6 +27,16 @@ public class ClientesController {
         return ResponseEntity.ok(clientesService.findAll());
     }
 
+    @GetMapping("/{rut}")
+    public ResponseEntity<List<Clientes>> findByRut(@PathVariable String rut) {
+        List<Clientes> cliente = clientesService.findByRut(rut);
+
+        if (cliente.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        } 
+        return ResponseEntity.ok(cliente);
+    }
+
     @GetMapping("cuenta/all-with-cuentas")
     public ResponseEntity<List<ClientesDto>> findAllClientesWithCuentas() {
         return ResponseEntity.ok(clientesService.findAllClientesWithCuentas());

@@ -35,4 +35,10 @@ public class CuentasServiceImpl implements CuentasService {
         return cuentasRepository.findByRut(rut);
     }
 
+    @Override
+    @Transactional
+    public Cuentas save(Cuentas cuentas) {
+        return cuentasRepository.save(cuentas);
+    }
+
 }

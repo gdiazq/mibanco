@@ -10,4 +10,6 @@ public interface CuentasService {
 
     List<Cuentas> findByRut(String rut);
 
+    Cuentas save (Cuentas cuentas);
+
 }

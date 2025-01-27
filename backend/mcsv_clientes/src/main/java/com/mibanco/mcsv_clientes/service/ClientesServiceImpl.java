@@ -31,6 +31,15 @@ public class ClientesServiceImpl implements ClientesService {
 
     @Override
     @Transactional(readOnly = true)
+    public List<Clientes> findByRut(String rut) {
+        if (rut == null || rut.trim().isEmpty()) {
+            throw new IllegalArgumentException("El RUT no puede ser nulo o vacío");
+        }
+        return clientesRepository.findByRut(rut);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
     public List<ClientesDto> findAllClientesWithCuentas() {
         List<Clientes> clientes = clientesRepository.findAll();
         List<CuentasDto> cuentas = cuentasServiceClient.findAllClientesWithCuentas();

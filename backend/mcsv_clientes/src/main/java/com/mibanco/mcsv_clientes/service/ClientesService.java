@@ -9,6 +9,8 @@ public interface ClientesService {
 
     Iterable<Clientes> findAll();
 
+    List<Clientes> findByRut(String rut);
+
     List<ClientesDto> findAllClientesWithCuentas();
 
     List<ClientesDto> findAllClientesWithCuentasByRut(String rut);
