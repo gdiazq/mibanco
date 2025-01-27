@@ -13,6 +13,7 @@ import com.mibanco.mcsv_clientes.service.ClientesService;
 
 import lombok.AllArgsConstructor;
 
+
 @RestController
 @RequestMapping("/clientes")
 @AllArgsConstructor
@@ -25,9 +26,12 @@ public class ClientesController {
         return ResponseEntity.ok(clientesService.findAll());
     }
 
-    @GetMapping("/all-with-cuentas")
+    @GetMapping("cuenta/all-with-cuentas")
     public ResponseEntity<List<ClientesDto>> findAllClientesWithCuentas() {
         return ResponseEntity.ok(clientesService.findAllClientesWithCuentas());
-    }    
+    }
 
+    
+    
+    
 }
