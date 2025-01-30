@@ -39,6 +39,12 @@ public class ClientesServiceImpl implements ClientesService {
     }
 
     @Override
+    @Transactional
+    public Clientes save(Clientes clientes) {
+        return clientesRepository.save(clientes);
+    }
+
+    @Override
     @Transactional(readOnly = true)
     public List<ClientesDto> findAllClientesWithCuentas() {
         List<Clientes> clientes = clientesRepository.findAll();
