@@ -12,6 +12,6 @@ public class JwtProperties {
 
     private String privateKey;
     private String publicKey;
-    private String ttl;
+    private Long ttl;
 
 }

@@ -15,7 +15,7 @@ import com.mibanco.mcsv_auth.service.UsuarioRegisterServiceInter;
 import lombok.AllArgsConstructor;
 
 @RestController
-@RequestMapping("/api/auth")
+@RequestMapping("/auth")
 @AllArgsConstructor
 public class UsuariosRegisterController {
 
@@ -23,13 +23,10 @@ public class UsuariosRegisterController {
     private final AuthUsuarioRegisterMapper usuarioRegisterMapper;
 
     @PostMapping("/register")
-    public ResponseEntity<UsuariosRegisterResponseDto> registerUsuario(
-        @Validated @RequestBody final UsuariosRegisterRequestDto registerDto) {
+    public ResponseEntity<UsuariosRegisterResponseDto> registerUsuario(@Validated @RequestBody final UsuariosRegisterRequestDto registerDto) {
 
-            final var registerUser = usuarioRegisterService.registerUsuario(
-                usuarioRegisterMapper.toUsuarios(registerDto));
-            
-            return ResponseEntity.ok(usuarioRegisterMapper.toUsuariosRegisterResponseDto(registerUser));
-        }
+        final var registerUser = usuarioRegisterService.registerUsuario(usuarioRegisterMapper.toUsuarios(registerDto));
+        return ResponseEntity.ok(usuarioRegisterMapper.toUsuariosRegisterResponseDto(registerUser));
+    }
         
 }

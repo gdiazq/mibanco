@@ -28,8 +28,8 @@ public class AuthConfig {
         return http
             .csrf(AbstractHttpConfigurer::disable)
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/api/auth/**").permitAll()
-                .requestMatchers("/api/auth/welcome").authenticated()
+                .requestMatchers("/auth/**").permitAll()
+                .requestMatchers("/auth/welcome").authenticated()
                 .anyRequest().authenticated()
             )
             .sessionManagement(session -> 

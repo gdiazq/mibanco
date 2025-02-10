@@ -1,5 +1,6 @@
 package com.mibanco.mcsv_auth.controller;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,7 +17,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 
 @RestController
-@RequestMapping("/api/auth")
+@RequestMapping("/auth")
 @AllArgsConstructor
 public class UsuariosLoginController {
 
@@ -29,10 +30,12 @@ public class UsuariosLoginController {
 
     @GetMapping("/welcome")
     public ResponseEntity<String> welcome(Authentication authentication) {
-        return ResponseEntity.ok("Bienvenido " + authentication.getName());
+        if (authentication != null && authentication.isAuthenticated()) {
+            return ResponseEntity.ok("Bienvenido " + authentication.getName());
+        } else {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("No autenticado");
+        }
     }
-    
-
 
 
 }
