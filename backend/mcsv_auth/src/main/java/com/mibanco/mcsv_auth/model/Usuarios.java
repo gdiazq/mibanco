@@ -1,20 +1,16 @@
 package com.mibanco.mcsv_auth.model;
 
 import java.time.LocalDateTime;
-import java.util.UUID;
 
-import org.hibernate.annotations.JdbcTypeCode;
-import org.hibernate.type.SqlTypes;
 import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.hibernate.annotations.CreationTimestamp;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EntityListeners;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -28,14 +24,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 @Builder
-@EntityListeners(AuditingEntityListener.class)
 public class Usuarios {
 
     @Id
-    @GeneratedValue
-    @JdbcTypeCode(SqlTypes.CHAR)
-    @Column(name = "usuario_id", updatable = false, nullable = false, columnDefinition = "VARCHAR(36)")
-    private UUID usuario_id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long usuario_id;
 
     @Column(name = "usuario", nullable = false)
     private String usuario;
