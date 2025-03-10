@@ -3,16 +3,10 @@ spring:
         name: mcsv_auth
     security:
         oauth2:
-            client:
-                registration:
-                    cognito:
-                        client-id: ${COGNITO_CLIENT_ID}
-                        client-secret: ${COGNITO_CLIENT_SECRET}
-                        scope: openid, profile, email
-                provider:
-                    cognito:
-                        issuerUri: ${COGNITO_ISSUR_URI}
-                        user-name-attribute: username
+           resourceserver:
+                jwt:
+                    issuerUri: https://cognito-idp.us-east-1.amazonaws.com/us-east-1_bENNgzSp5
+                    jwk-set-uri: https://cognito-idp.us-east-1.amazonaws.com/us-east-1_bENNgzSp5/.well-known/jwks.json
 
 server:
     port: 8090
